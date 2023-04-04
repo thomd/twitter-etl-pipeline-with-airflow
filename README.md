@@ -11,7 +11,7 @@ into a Postgres Database.
 
     brew install postgresql@14
     brew services run postgresql@14
-    createdb -h localhost -p 5432 -U <USER> twitter_db
+    createdb -h localhost -p 5432 -U <USER> twitter
 
 ## Setup Apache Airflow
 
@@ -36,6 +36,7 @@ into a Postgres Database.
     pip install snscrape pandas
 
     airflow scheduler -D
-    airflow connections add --conn-type postgres --conn-host localhost --conn-schema twitter_db --conn-login <USER> twitter_pg_connection
-    
+    airflow connections add --conn-type postgres --conn-host localhost --conn-schema twitter --conn-login <USER> pg_connection
+
+    airflow dags list
 
