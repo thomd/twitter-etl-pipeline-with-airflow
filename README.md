@@ -10,6 +10,7 @@ The ETL pipeline
 1. **transforms** it (remove all non-ascii charaters) and
 1. **loads** it into a Postgres Database.
 
+```
     airflow dags show etl_twitter | sed 1d | graph-easy --as=boxart
 
                                      etl_twitter
@@ -17,6 +18,7 @@ The ETL pipeline
     ╭──────────────╮     ╭──────────────╮     ╭────────────────╮     ╭───────────╮
     │ create_table │ ──▶ │ extract_data │ ──▶ │ transform_data │ ──▶ │ load_data │
     ╰──────────────╯     ╰──────────────╯     ╰────────────────╯     ╰───────────╯
+```
 
 ## Setup Postgresql
 
