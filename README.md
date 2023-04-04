@@ -4,10 +4,11 @@ This is an **educational project**.
 
 [Apache Airflow](https://airflow.apache.org/) is a platform to programmatically author, schedule and monitor workflows using Python.
 
-With Apache Airflow, a workflow is represented as a **DAG** (Directed Acyclic Graph)
+The ETL pipeline 
 
-The ETL pipeline **extracts** data from Twitter (date, user, content, source, location of all tweets with hashtag `ChatGPT` since 2023-01-01),  **transforms** it (remove all non-ascii charaters) and **loads** it into a Postgres Database.
-
+1. **extracts** data from Twitter (date, user, content, source, location of all tweets with hashtag `ChatGPT` since 2023-01-01),
+1. **transforms** it (remove all non-ascii charaters) and
+1. **loads** it into a Postgres Database.
 
     airflow dags show etl_twitter | sed 1d | graph-easy --as=boxart
 
@@ -41,12 +42,20 @@ The ETL pipeline **extracts** data from Twitter (date, user, content, source, lo
     export AIRFLOW__CORE__LOAD_EXAMPLES=False
     airflow db init
 
-## Run ETL Pipeline
+## Run ETL Pipeline via CLI
 
     pip install snscrape pandas
 
-    airflow scheduler -D
     airflow connections add --conn-type postgres --conn-host localhost --conn-schema twitter --conn-login <USER> pg_connection
+    airflow scheduler -D
 
     airflow dags list
-    airflow dags test etl_twitter
+    airflow dags unpause etl_twitter
+    airflow dags trigger etl_twitter
+    airflow dags list-runs -d etl_twitter
+
+## Run ETL Pipeline via Web-UI
+
+    airflow users create -u airflow -p airflow -r Admin -f John -l Doe -e john.doe@airflow.apache.org
+    airflow webserver -p 8080 -D
+

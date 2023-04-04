@@ -1,5 +1,6 @@
 logs/
-airflow-scheduler.*
+airflow-scheduler*
+airflow-webserver*
 airflow.db
 airflow.cfg
 webserver_config.py
