@@ -3,3 +3,4 @@ airflow-scheduler.*
 airflow.db
 airflow.cfg
 webserver_config.py
+*.csv

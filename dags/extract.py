@@ -8,6 +8,6 @@ def extract_from_twitter():
             break
         tweets.append([tweet.date, tweet.user.username, tweet.rawContent, tweet.sourceLabel, tweet.user.location])
 
-    tweets_df = pd.DataFrame(tweets_list, columns=['datetime', 'username', 'text', 'source', 'location'])
-    tweets_df.to_csv('tweets.csv')
+    tweets_df = pd.DataFrame(tweets, columns=['datetime', 'username', 'text', 'source', 'location'])
+    tweets_df.to_csv('tweets.csv', index=False)
 
