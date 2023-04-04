@@ -4,7 +4,9 @@ This is an **educational project**.
 
 [Apache Airflow](https://airflow.apache.org/) is a platform to programmatically author, schedule and monitor workflows using Python.
 
-The ETL pipeline 
+## ETL Pipeline
+
+The pipeline
 
 1. **extracts** data from Twitter (date, user, content, source, location of all `#ChatGPT` tweets since `2023-01-01`),
 1. **transforms** it (remove all non-ascii charaters) and
