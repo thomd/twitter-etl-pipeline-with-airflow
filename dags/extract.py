@@ -10,4 +10,3 @@ def extract_from_twitter():
 
     df = pd.DataFrame(tweets, columns=['datetime', 'username', 'text', 'source', 'location'])
     df.to_csv('tweets.csv', index=False)
-    return True
