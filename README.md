@@ -6,12 +6,12 @@ This is an **educational project**.
 
 The ETL pipeline 
 
-1. **extracts** data from Twitter (date, user, content, source, location of all tweets with hashtag `ChatGPT` since 2023-01-01),
+1. **extracts** data from Twitter (date, user, content, source, location of all `#ChatGPT` tweets since `2023-01-01`),
 1. **transforms** it (remove all non-ascii charaters) and
 1. **loads** it into a Postgres Database.
 
 ```
-    airflow dags show etl_twitter | sed 1d | graph-easy --as=boxart
+airflow dags show etl_twitter | sed 1d | graph-easy --as=boxart
 
                                      etl_twitter
     
