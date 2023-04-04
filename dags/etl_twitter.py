@@ -17,8 +17,7 @@ with DAG('etl_twitter', default_args=default_args, schedule_interval=timedelta(m
     create_table = PostgresOperator(task_id='create_table', postgres_conn_id='pg_connection', sql='create_table.sql')
     extract_data = PythonOperator(task_id='extract_data', python_callable=extract_from_twitter)
     transform_data = PythonOperator(task_id='transform_data', python_callable=clean_twitter_data)
-    # load_data = PythonOperator(task_id='load_data', python_callable=write_into_database)
+    load_data = PythonOperator(task_id='load_data', python_callable=write_into_database)
 
-# create_table >> extract_data >> transform_data >> load_data
-create_table >> extract_data >> transform_data
+create_table >> extract_data >> transform_data >> load_data
 
