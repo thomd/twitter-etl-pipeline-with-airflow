@@ -17,4 +17,5 @@ def clean_twitter_data():
     # fill missing data
     df.location.fillna(value='NA', inplace=True)
 
-    df.to_csv('tweets.csv', index=False, sep ='\t', header=None)
+    # write data in a postgres compatible format
+    df.to_csv('tweets_pg.csv', index=False, sep ='\t', header=None)
