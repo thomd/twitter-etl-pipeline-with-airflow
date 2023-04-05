@@ -1,6 +1,6 @@
 # Twitter ETL Pipeline with Apache Airflow
 
-This is an **educational project**.
+This is an **educational project** and **proof-of-concept**.
 
 [Apache Airflow](https://airflow.apache.org/) is a platform to programmatically author, schedule and monitor workflows using Python.
 
@@ -8,9 +8,9 @@ This is an **educational project**.
 
 The pipeline
 
-1. **extracts** data from Twitter (date, user, content, source, location of all `#ChatGPT` tweets since `2023-01-01`),
-1. **transforms** it (remove all non-ascii charaters) and
-1. **loads** it into a Postgres Database.
+1. **Extract** data from Twitter: date, user, content, source, location of all `#ChatGPT` tweets since `2023-01-01` (see file [dags/extract.py](https://github.com/thomd/twitter-etl-pipeline-with-airflow/blob/9baf9f301d3ca866c7e12f3cb63460d12e1edb94/dags/extract.py#L6)),
+1. **Transform** data: remove all non-ascii charaters, remove line-breaks, etc.
+1. **Load** data into a Postgres database.
 
 ```
 airflow dags show etl_twitter | sed 1d | graph-easy --as=boxart
