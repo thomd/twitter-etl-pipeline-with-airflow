@@ -6,11 +6,13 @@ This is an **educational project** and **proof-of-concept**.
 
 ## Twitter ETL Pipeline
 
-The pipeline
+The pipeline does
 
 1. **Extract** data from Twitter: date, user, content, source, location of all `#ChatGPT` tweets since `2023-01-01` (see file [dags/extract.py](https://github.com/thomd/twitter-etl-pipeline-with-airflow/blob/9baf9f301d3ca866c7e12f3cb63460d12e1edb94/dags/extract.py#L6)),
 1. **Transform** data: remove all non-ascii charaters, remove line-breaks, etc.
 1. **Load** data into a Postgres database.
+
+See this task graph:
 
 ```
 airflow dags show etl_twitter | sed 1d | graph-easy --as=boxart
