@@ -4,7 +4,7 @@ This is an **educational project**.
 
 [Apache Airflow](https://airflow.apache.org/) is a platform to programmatically author, schedule and monitor workflows using Python.
 
-## ETL Pipeline
+## Twitter ETL Pipeline
 
 The pipeline
 
@@ -22,13 +22,15 @@ airflow dags show etl_twitter | sed 1d | graph-easy --as=boxart
     ╰──────────────╯     ╰──────────────╯     ╰────────────────╯     ╰───────────╯
 ```
 
-## Setup Postgresql
+## Setup
+
+### Postgresql
 
     brew install postgresql@14
     brew services run postgresql@14
     createdb -h localhost -p 5432 -U <USER> twitter
 
-## Setup Apache Airflow
+### Apache Airflow
 
     git clone https://github.com/thomd/twitter-etl-pipeline-with-airflow.git
     cd twitter-etl-pipeline-with-airflow
@@ -46,19 +48,20 @@ airflow dags show etl_twitter | sed 1d | graph-easy --as=boxart
     export AIRFLOW__CORE__LOAD_EXAMPLES=False
     airflow db init
 
-## Run ETL Pipeline via CLI
+## Run ETL Pipeline
 
     pip install snscrape pandas
-
     airflow connections add --conn-type postgres --conn-host localhost --conn-schema twitter --conn-login <USER> pg_connection
     airflow scheduler -D
+
+### Run via Airflow CLI
 
     airflow dags list
     airflow dags unpause etl_twitter
     airflow dags trigger etl_twitter
     airflow dags list-runs -d etl_twitter
 
-## Run ETL Pipeline via Web-UI
+### Run via Airflow Web-UI
 
     airflow users create -u airflow -p airflow -r Admin -f John -l Doe -e john.doe@airflow.apache.org
     airflow webserver -p 8080 -D
