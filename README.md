@@ -12,7 +12,7 @@ The pipeline does
 1. **Transform** data: remove all non-ascii charaters, remove line-breaks, etc.
 1. **Load** data into a Postgres database.
 
-See this task graph:
+Pipeline task graph:
 
 ```
 airflow dags show etl_twitter | sed 1d | graph-easy --as=boxart
